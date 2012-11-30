@@ -1,0 +1,43 @@
+<h1>Setup</h1>
+
+<form action="/setup" method="post">
+	<input type="hidden" name="step" value="3" />
+	<fieldset>
+		<legend>Create new Minecraft server</legend>
+
+		<p>
+			<label>Name</label>
+			<input type="text" name="name" value="<?php echo $this->defaults['name']; ?>" />
+		</p>
+
+		<p>
+			<label>Type</label>
+			<label class="radio" for="type_mine">Minecraft</label><input id="type_mine" type="radio" name="type" value="<?php echo Application_Model_MinecraftServer::TYPE_MINECRAFT; ?>" checked="checked" />
+			<label class="radio" for="type_craft">Craftbukkit</label><input id="type_craft" type="radio" name="type" value="<?php echo Application_Model_MinecraftServer::TYPE_BUKKIT; ?>" />
+		</p>
+
+		<p>
+			<label>Host</label>
+			<input type="text" name="host" value="<?php echo $this->defaults['host']; ?>" />
+		</p>
+
+		<p>
+			<label>Port</label>
+			<input type="text" name="port" value="<?php echo $this->defaults['port']; ?>" />
+		</p>
+
+		<p>
+			<label>RCON Port</label>
+			<input type="text" name="rcon_port" value="<?php echo $this->defaults['rconport']; ?>" />
+		</p>
+
+		<p>
+			<label>Server Storage</label>
+			<input type="text" name="server_storage" value="<?php echo $this->defaults['server_storage']; ?>" style="width: 300px;" />
+		</p>
+
+		<p class="submit">
+			<input type="submit" value="Continue" />
+		</p>
+	</fieldset>
+</form>

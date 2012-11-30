@@ -1,0 +1,26 @@
+<form action="/login" method="post" class="login">
+	<fieldset>
+		<legend>Login</legend>
+
+		<p>
+			<label>Username</label>
+			<input type="text" name="username" value="<?php echo $this->prev_username; ?>" />
+		</p>
+
+		<p>
+			<label>Password</label>
+			<input type="password" name="password" />
+		</p>
+
+
+		<?php if ($this->error) { ?>
+		<p class="error">
+			<?php echo $this->error; ?>
+		</p>
+		<?php } ?>
+
+		<p class="submit">
+			<input type="submit" value="Login" />
+		</p>
+	</fieldset>
+</form>

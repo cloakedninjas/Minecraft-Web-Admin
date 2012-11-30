@@ -1,0 +1,57 @@
+<h1>Create New Server</h1>
+<?php
+if ($this->error) {
+	echo $this->errorMessage($this->error);
+}
+else {
+
+	if ($this->form_errors) {
+		echo $this->errorMessage($this->form_errors);
+	}
+?>
+	<form action="/servers/create" method="post">
+
+		<fieldset>
+			<legend>Server Details</legend>
+
+			<p>
+				<label for="name">Name</label>
+				<input id="name" type="text" name="name" value="" />
+			</p>
+
+			<p>
+				<label>Type</label>
+				<label class="radio" for="type_mine">Minecraft</label><input id="type_mine" type="radio" name="type" value="<?php echo Application_Model_MinecraftServer::TYPE_MINECRAFT; ?>" checked="checked" />
+				<label class="radio" for="type_craft">Craftbukkit</label><input id="type_craft" type="radio" name="type" value="<?php echo Application_Model_MinecraftServer::TYPE_BUKKIT; ?>" />
+			</p>
+
+			<p>
+				<label for="local">Location</label>
+				<label class="radio" for="type_local">Local</label><input id="type_local" type="radio" name="local" value="local" checked="checked" />
+				<label class="radio" for="type_remote">Remote</label><input id="type_remote" type="radio" name="local" value="remote" />
+			</p>
+			<p>
+				<label for="name">Host</label>
+				<input id="name" type="text" name="host" value="<?php echo $this->defaults['host']; ?>" />
+			</p>
+
+			<p>
+				<label for="name">Port</label>
+				<input id="name" type="text" name="port" value="<?php echo $this->defaults['port']; ?>" />
+			</p>
+
+			<p>
+				<label for="name">RCON Port</label>
+				<input id="name" type="text" name="rconport" value="<?php echo $this->defaults['rconport']; ?>" />
+			</p>
+
+			<p class="submit">
+				<input type="submit" value="Create" />
+			</p>
+		</fieldset>
+
+	</form>
+
+<?php
+}
+?>

@@ -1,0 +1,505 @@
+body {
+	padding: 0;
+	margin: 0;
+	font: 12px "Segoe UI", arial, sans-serif;
+}
+
+h1 {
+	margin: 0 0 15px;
+}
+
+a {
+	color: #20287a;
+}
+
+a.button {
+	text-decoration: none;
+}
+
+table {
+	width: 100%;
+}
+
+table th {
+	padding: 2px 5px;
+	text-align: left;
+	background: #ddd;
+}
+
+table td {
+	padding: 2px 5px;
+}
+
+table tr.alt td {
+	background: #f0f0f0;
+}
+
+form.login {
+	width: 460px;
+	margin: 50px auto 0;
+}
+
+input, select {
+	font: 12px "Segoe UI", arial, sans-serif;
+}
+
+#frame {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+
+.header {
+	position: relative;
+	margin: 0 0 20px;
+	padding: 10px 0 0;
+}
+
+.header .logo {
+	display: block;
+	width: 358px;
+	height: 96px;
+	background: url(/images/logo8.png) top left no-repeat;
+}
+
+.navigation {
+	position: absolute;
+	left: 380px;
+	right: 0;
+	top: 70px;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	border: 1px #000 solid;
+	background: #005800;
+}
+
+.navigation li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	border-right: 1px #000 solid;
+}
+
+.navigation a {
+	height: 18px;
+	display: block;
+	padding: 5px 15px;
+	text-decoration: none;
+	color: #fff;
+}
+
+.navigation a:hover {
+	background: #00B500;
+}
+
+.navigation li.active a {
+	background: #7C7C7C;
+	color: #fff;
+}
+
+.navigation li.active a:hover {
+	color: #fff;
+}
+
+#footer {
+	margin: 50px 0 0;
+	padding: 5px 0;
+	background: #ddd;
+}
+
+#footer p {
+	margin: 0;
+	text-align: center;
+}
+
+h1 {
+	padding: 0 0 5px;
+	font-size: 24px;
+	font-weight: bold;
+	border-bottom: 1px #ddd solid;
+}
+
+fieldset {
+	margin: 0 0 15px;
+	border: 1px #ddd solid;
+}
+
+fieldset legend {
+	font-weight: bold;
+}
+
+fieldset h3 {
+	margin: 0 0 10px;
+	padding: 0 0 5px;
+	border-bottom: 1px #DDD solid;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+fieldset p {
+	margin: 10px 0 10px;
+	padding: 10px;
+	background: #D1D1D1;
+}
+
+fieldset label {
+	display: inline-block;
+	width: 200px;
+}
+
+fieldset label.radio {
+	width: auto;
+	margin: 0 5px 0 0;
+}
+
+fieldset input {
+	width: 200px;
+	padding: 2px 5px;
+	border: 1px #5D5D5D solid;
+	border-radius: 4px;
+	font-family: "Segoe UI";
+}
+
+fieldset input[type=radio], fieldset input[type=checkbox] {
+	width: 20px;
+	margin: 0 10px 0 0;
+}
+
+fieldset input[type=submit] {
+	width: auto;
+}
+
+fieldset .ui-slider {
+	border: 1px #5D5D5D solid;
+}
+
+fieldset .ui-slider .ui-slider-handle {
+	border: 1px #5D5D5D solid;
+}
+
+fieldset .desc {
+	margin: 0 0 0 50px;
+}
+
+fieldset .submit {
+	float: right;
+	background: none;
+	padding: 0;
+}
+
+fieldset input[type=submit], .button {
+	display: inline-block;
+	margin: 0 10px 0 0;
+	padding: 5px;
+	border: 1px #005800 solid;
+	border-radius: 6px;
+	background: #005800;
+	color: #fff;
+	cursor: pointer;
+}
+
+fieldset input[type=submit]:hover, .button:hover {
+	background: #00B500;
+}
+
+fieldset .submit input {
+	margin: 0;
+}
+
+.note {
+	padding: 10px;
+	border: 1px solid #FED22F;
+	background: #FFE45C url(/css/ui-lightness/images/ui-bg_highlight-soft_75_ffe45c_1x100.png) top left repeat-x;
+	font-weight: bold;
+}
+
+.error {
+	padding: 10px;
+	border: 1px red solid;
+	background: #B81900 url(/css/ui-lightness/images/ui-bg_diagonals-thick_18_b81900_40x40.png) 50% 50% repeat;
+	font-weight: bold;
+	color: #fff;
+}
+
+ul.error {
+	padding: 10px 10px 10px 20px;
+}
+
+#flash_message {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: -50px;
+	width: 700px;
+	margin: 0 auto 10px;
+	font-weight: bold;
+	z-index: 1000;
+}
+
+#flash_message div {
+	padding: 10px;
+}
+
+#flash_message .notice {
+	border: 1px solid #FED22F;
+	background: #FFE45C url(/css/ui-lightness/images/ui-bg_highlight-soft_75_ffe45c_1x100.png) top left repeat-x;
+}
+
+#flash_message .warn {
+	border: 1px red solid;
+	background: #B81900 url(/css/ui-lightness/images/ui-bg_diagonals-thick_18_b81900_40x40.png) 50% 50% repeat;
+	color: #fff;
+}
+
+ul.tab_nav {
+	float: left;
+	width: 200px;
+	margin: 0 -1px 0 0;
+	padding: 0;
+	border: 1px #ddd solid;
+	border-bottom: 0;
+	list-style-type: none;
+}
+
+ul.tab_nav a {
+	display: block;
+	height: 18px;
+	padding: 5px 15px;
+	border-bottom: 1px #ddd solid;
+	text-decoration: none;
+}
+
+ul.tab_nav li.active a {
+	background: #7C7C7C;
+	color: #fff;
+}
+
+fieldset.tab {
+	position: relative;
+	display: none;
+	margin: 0 0 0 201px;
+}
+
+.status_light {
+	display: inline-block;
+	position: relative;
+	left: 5px;
+	top: 2px;
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
+}
+.status_ok {
+	background: green;
+}
+
+.status_nok {
+	background: red;
+}
+
+div.half_width_left {
+	float: left;
+	width: 49%;
+}
+
+div.half_width_right {
+	float: right;
+	width: 49%;
+}
+
+div.controls {
+	padding: 10px 0;
+}
+
+.console_output {
+	font-family: "courier new";
+}
+
+.console_output p {
+	background: none;
+	margin: 0 0 5px;
+	padding: 0;
+}
+
+.console_output .dlp {
+	position: relative;
+	width: 300px;
+	height: 14px;
+	background: #ccc;
+}
+
+.console_output .dlp .progress_meter {
+	position: absolute;
+	width: 0;
+	height: 14px;
+	background: green;
+}
+
+.console_output .dlp .percent {
+	position: relative;
+	left: 305px;
+}
+
+.tooltip {
+	display: inline-block;
+	position: relative;
+	top: 2px;
+	width: 16px;
+	height: 16px;
+	margin: 0 0 0 5px;
+	background: url(/images/information-button.png) center center no-repeat;
+}
+
+.tooltip ins {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 20px;
+	width: 300px;
+	padding: 6px;
+	background: #9FDAEE;
+	border: 1px solid #2BB0D7;
+	border-radius: 4px;
+	text-decoration: none;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.tab.players {
+	min-height: 200px;
+}
+
+.player_list {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 150px;
+	margin: 0;
+	padding: 0;
+	border-right: 1px #ddd solid;
+	list-style-type: none;
+}
+
+.player_list a {
+	display: block;
+	height: 18px;
+	padding: 5px 15px;
+	border-bottom: 1px #ddd solid;
+	text-decoration: none;
+}
+
+.player_list li.active a {
+	background: #ddd;
+	color: #000;
+}
+
+.player_actions {
+	display: none;
+	position: absolute;
+	left: 150px;
+	padding: 5px 10px;
+}
+
+.player_actions p {
+	margin: 0 0 10px;
+	padding: 0;
+	background: none;
+}
+
+.tooltip:hover ins {
+	display: block;
+}
+
+/* server detail - world settings */
+
+#mbh, #mp, #vd {
+	width: 50px;
+}
+
+#vd {
+	margin: 0 10px 0 0;
+}
+#vd-slider {
+	display: inline-block;
+	width: 300px;
+}
+
+/* button icons */
+
+.button.icon {
+	padding-left: 25px;
+	background-position: 4px center;
+	background-repeat: no-repeat;
+}
+
+.button.tell {
+	background-image: url(/images/balloon.png);
+}
+
+.button.give {
+	background-image: url(/images/shovel.png);
+}
+
+.button.tp {
+	background-image: url(/images/map--arrow.png);
+}
+
+.button.xp {
+	background-image: url(/images/arrow-skip-090.png);
+}
+
+.button.kill {
+	background-image: url(/images/skull.png);
+}
+
+.button.server {
+	background-image: url(/images/server--plus.png);
+}
+
+/* windows */
+
+#fade_out {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #fff;
+	opacity: 0.7;
+}
+
+.dialog {
+	position: absolute;
+	left: 30%;
+	right: 30%;
+	top: 100px;
+	padding: 20px;
+	border: 1px #000 solid;
+	background: #fff;
+	box-shadow: 10px 10px 5px #888;
+}
+
+.dialog h4 {
+	position: relative;
+	margin: -20px -20px 20px -20px;
+	padding: 5px;
+	background: #7C7C7C;
+	color: #fff;
+}
+
+.dialog h4 .close {
+	position: absolute;
+	right: 5px;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	background: url(/images/cross-button.png) center center no-repeat;
+}
+
+#tell_window {
+	
+}
+
+.clear {
+	clear: both;
+}

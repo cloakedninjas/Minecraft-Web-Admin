@@ -1,0 +1,335 @@
+<?php
+if ($this->error) {
+	echo $this->errorMessage($this->error);
+}
+else {
+	$checked = 'checked="checked"';
+	$server_running = $this->server->isRunning();
+
+	?>
+	<h1>Server: <?php echo $this->server->name; ?></h1>
+
+	<?php
+	if ($this->server->has_changes) {
+		echo '<p class="note">This server has config changes waiting to be applied, restart the server for them to take effect.</p>';
+	}
+	?>
+
+	<ul class="tab_nav">
+		<li class="active"><a href="#overview">Overview</a></li>
+		<li><a href="#players">Players</a></li>
+		<li><a href="#world_options">World Options</a></li>
+		<li><a href="#server_settings">Server Settings</a></li>
+	</ul>
+
+	<form action="/servers/<?php echo $this->server->id; ?>" method="post">
+		<fieldset class="tab overview" style="display: block;">
+			<div class="controls">
+				<div class="running" <?php if (!$server_running) { echo 'style="display: none;"';} ?>>
+					<a class="button" onclick="MWA.stopServer(<?php echo $this->server->id; ?>)">Stop Server</a>
+					<a class="button" onclick="MWA.stopServer(<?php echo $this->server->id; ?>, true)">Restart Server</a>
+					<label><input type="checkbox" checked="checked" value="1" id="graceful_stop"> Issue shutdown warning</label>
+
+				</div>
+				<div class="stopped" <?php if ($server_running) { echo 'style="display: none;"';} ?>>
+					<a class="button" onclick="MWA.startServer(<?php echo $this->server->id; ?>)">Start Server</a>
+				</div>
+			</div>
+
+			<div class="half_width_left">
+				<p>
+					<label>Running:</label>
+					<?php
+					$running = $this->server->isRunning();
+					?>
+					<span class="status_text"><?php echo ($running) ? 'Yes' : 'No'; ?></span>
+					<span class="status_light status_<?php echo ($running) ? 'ok' : 'nok'; ?>"></span>
+				</p>
+				<p>
+					<label>Players online:</label>
+					<span><?php echo $this->server->getOnlinePlayers(); ?> / <?php echo $this->server->getMaxPlayers(); ?></span>
+				</p>
+				<p>
+					<label>Game mode:</label>
+					<span><?php echo $this->server->getGamemode(); ?></span>
+				</p>
+			</div>
+
+			<div class="half_width_right">
+				<p>
+					<label>Address:</label>
+					<span><?php echo $this->server->host ?>:<?php echo $this->server->port ?></span>
+				</p>
+				<p>
+					<label>Query Enabled:</label>
+					<span><?php echo $this->server->getProperty('enable-query'); ?></span>
+				</p>
+				<p>
+					<label>Hardcore:</label>
+					<span><?php echo $this->server->getProperty('hardcore'); ?></span>
+				</p>
+			</div>
+		</fieldset>
+
+		<fieldset class="tab players">
+			<?php
+			$players = $this->server->getPlayerList();
+
+			if ($players !== false) {
+				echo '<ul class="player_list">';
+
+				foreach ($players as $player) {
+					echo '<li data-player="' . $player . '"><a href="#players" onclick="MWA.openPlayerActions(this)">' . $player . '</a></li>';
+				}
+				echo '</ul>';
+			?>
+			<div class="player_actions">
+				<p>
+					<a class="button icon tell" onclick="MWA.openWindow('tell')">Whisper...</a>
+					<a class="button icon give" onclick="MWA.openWindow('give')">Give Item...</a>
+					<a class="button icon tp" onclick="MWA.openWindow('tp')">Teleport...</a>
+					<a class="button icon xp" onclick="MWA.openWindow('xp')">XP...</a>
+					<a class="button icon kill" onclick="MWA.issueCommand('kill')">Kill</a>
+				</p>
+				<hr />
+				<p>
+					<a class="button" onclick="MWA.issueCommand('op')">Op</a>
+					<a class="button" onclick="MWA.issueCommand('whitelist')">Add to Whitelist</a>
+				</p>
+				<hr />
+				<p>
+					<a class="button" onclick="MWA.issueCommand('deop')">De-Op</a>
+					<a class="button" onclick="MWA.issueCommand('kick')">Kick</a>
+					<a class="button" onclick="MWA.issueCommand('ban')">Ban</a>
+				</p>
+			</div>
+
+			<?php
+			}
+			?>
+		</fieldset>
+
+		<fieldset class="tab world_options">
+			<?php if ($running) { ?>
+			<p class="note">Note: Changes made here will require a server restart to take effect</p>
+			<?php } ?>
+
+			<h3>Game Settings</h3>
+			<p>
+				<label for="gm">Game Mode</label>
+				<select id="gm" name="prop[gamemode]">
+					<?php
+					foreach (Application_Model_MinecraftServer::$_game_mode_list as $val=>$name) {
+						$selected = ($this->server->getProperty('gamemode') == $val) ? 'selected="selected"' : '';
+						echo '<option value="' . $val . '" ' . $selected . '>' . $name . '</option>';
+					}
+					?>
+				</select>
+			</p>
+			<p>
+				<label for="di">Difficulty</label>
+				<select id="di" name="prop[difficulty]">
+					<?php
+					foreach (Application_Model_MinecraftServer::$_difficulty_list as $val=>$name) {
+						$selected = ($this->server->getProperty('difficulty') == $val) ? 'selected="selected"' : '';
+						echo '<option value="' . $val . '" ' . $selected . '>' . $name . '</option>';
+					}
+					?>
+				</select>
+			</p>
+
+			<p>
+				<label for="h">Hardcore</label>
+				<input id="h" type="checkbox" name="prop[hardcore]" value="1" <?php if ($this->server->getProperty('hardcore', false)) { echo $checked; } ?> />
+			</p>
+			<p>
+				<label for="pvp">PvP</label>
+				<input id="pvp" type="checkbox" name="prop[pvp]" value="1" <?php if ($this->server->getProperty('pvp', false)) { echo $checked; } ?> />
+			</p>
+			<p>
+				<label for="af">Allow Flight</label>
+				<input id="af" type="checkbox" name="prop[allow-flight]" value="1" <?php if ($this->server->getProperty('allow-flight', false)) { echo $checked; } ?> />
+			</p>
+			<p>
+				<label for="mp">Max Players</label>
+				<input id="mp" type="text" name="prop[max-players]" value="<?php echo $this->server->getProperty('max-players'); ?>" />
+			</p>
+			<p>
+				<label for="mbh">Max Build Height</label>
+				<input id="mbh" type="text" name="prop[max-build-height]" value="<?php echo $this->server->getProperty('max-build-height'); ?>" />
+			</p>
+
+
+			<h3>World Type</h3>
+			<p>
+				<label for="lt">Level Type</label>
+				<select id="lt" name="prop[level-type]">
+					<?php
+					foreach (Application_Model_MinecraftServer::$_level_type_list as $val=>$name) {
+						$selected = ($this->server->getProperty('level-type') == $val) ? 'selected="selected"' : '';
+						echo '<option value="' . $val . '" ' . $selected . '>' . $name . '</option>';
+					}
+					?>
+				</select>
+			</p>
+			<p>
+				<label for="an">Allow Nether</label>
+				<input id="an" type="checkbox" name="prop[allow-nether]" value="1" <?php if ($this->server->getProperty('allow-nether', false)) { echo $checked; } ?> />
+			</p>
+
+			<h3>World Environment</h3>
+
+			<p>
+				<label for="sn">Spawn NPCs</label>
+				<input id="sn" type="checkbox" name="prop[spawn-npcs]" value="1" <?php if ($this->server->getProperty('spawn-npcs', false)) { echo $checked; } ?> />
+			</p>
+			<p>
+				<label for="sa">Spawn Animals</label>
+				<input id="sa" type="checkbox" name="prop[spawn-animals]" value="1" <?php if ($this->server->getProperty('spawn-animals', false)) { echo $checked; } ?> />
+			</p>
+			<p>
+				<label for="sm">Spawn Monsters</label>
+				<input id="sm" type="checkbox" name="prop[spawn-monsters]" value="1" <?php if ($this->server->getProperty('spawn-monsters', false)) { echo $checked; } ?> />
+			</p>
+			<p>
+				<label for="gs">Generate Structures</label>
+				<input id="gs" type="checkbox" name="prop[generate-structures]" value="1" <?php if ($this->server->getProperty('generate-structures', false)) { echo $checked; } ?> />
+			</p>
+			<p>
+				<label for="tp">Texture Pack</label>
+				<input id="tp" type="text" name="prop[texture-pack]" value="<?php echo $this->server->getProperty('texture-pack'); ?>" />
+				<span class="tooltip"><ins>URL to a .zip file containing 16 * 16 textures. Clients will download this before connecting.</ins></span>
+			</p>
+
+
+
+			<h3>Misc.</h3>
+			<p>
+				<label for="ln">Level Name</label>
+				<input id="ln" type="text" name="prop[level-name]" value="<?php echo $this->server->getProperty('level-name'); ?>" />
+				<span class="tooltip"><ins>Changing this will cause Minecraft to generate a new world if it doesn&apos;t already exist</ins></span>
+			</p>
+			<p>
+				<label for="ls">Level Seed</label>
+				<input id="ls" type="text" name="prop[level-seed]" value="<?php echo $this->server->getProperty('level-seed'); ?>" />
+			</p>
+
+
+			<p>
+				<label for="vd">View Distance</label>
+				<input id="vd" type="text" name="prop[view-distance]" value="<?php echo $this->server->getProperty('view-distance'); ?>" />
+				<span id="vd-slider" class="slider"></span>
+
+			</p>
+			<p>
+				<label for="motd">MoTD</label>
+				<input id="motd" type="text" name="prop[motd]" value="<?php echo $this->server->getProperty('motd'); ?>" />
+			</p>
+
+			<?php
+			if ($running) {
+				echo '<input class="button" type="submit" value="Save Changes and Apply Now" name="save_apply" />';
+			}
+			?>
+			<input class="button" type="submit" value="Save Changes" name="save" />
+
+		</fieldset>
+
+		<fieldset class="tab server_settings">
+			<?php if ($running) { ?>
+			<p class="note">Note: Changes made here will require a server restart to take effect</p>
+			<?php } ?>
+			<p class="note">Note: Disabling RCON will prevent certain MWA functionality, e.g. Stopping the server</p>
+
+			<h3>RCON</h3>
+			<p>
+				<label for="er">RCON Enabled</label>
+				<input id="er" type="checkbox" name="prop[enable-rcon]" value="1" <?php if ($this->server->getProperty('enable-rcon', false)) { echo $checked; } ?> />
+			</p>
+			<p>
+				<label for="rp">RCON port</label>
+				<input id="rp" type="text" name="prop[rcon.port]" value="<?php echo $this->server->getProperty('rcon.port'); ?>" />
+			</p>
+			<p>
+				<label for="rp2">RCON password</label>
+				<input id="rp2" type="text" name="prop[rcon.password]" value="<?php echo $this->server->getProperty('rcon.password'); ?>" />
+			</p>
+
+			<h3>Gamespy Browser</h3>
+			<p>
+				<label for="eq">Enable Query</label>
+				<input id="eq" type="checkbox" name="prop[enable-query]" value="1" <?php if ($this->server->getProperty('enable-query', false)) { echo $checked; } ?> />
+				<span class="tooltip"><ins>If enabled, server will respond to query requests</ins></span>
+			</p>
+
+			<h3>Mojang</h3>
+			<p>
+				<label for="se">Snooper Enabled</label>
+				<input id="se" type="checkbox" name="prop[snooper-enabled]" value="1" <?php if ($this->server->getProperty('snooper-enabled', false)) { echo $checked; } ?> />
+				<span class="tooltip"><ins>Allows anonymouse usage data to be sent to Mojang</ins></span>
+			</p>
+			<p>
+				<label for="om">Online Mode</label>
+				<input id="om" type="checkbox" name="prop[online-mode]" value="1" <?php if ($this->server->getProperty('online-mode', false)) { echo $checked; } ?> />
+				<span class="tooltip"><ins>Server will check connecting players against minecraft&apos;s account database</ins></span>
+			</p>
+
+			<h3>Misc.</h3>
+			<p>
+				<label for="wl">White List</label>
+				<input id="wl" type="checkbox" name="prop[white-list]" value="1" <?php if ($this->server->getProperty('white-list', false)) { echo $checked; } ?> />
+				<span class="tooltip"><ins>If enabled, only players on the white list can connect. Ops are automatically granted access</ins></span>
+			</p>
+
+		</fieldset>
+	</form>
+
+	<div id="windows" style="display: none;">
+
+		<div id="tell_window" class="dialog">
+			<h4>Whisper player<span class="close" title="Close" onclick="MWA.closeWindow(this);"></span></h4>
+			<form onsubmit="MWA.issueCommand('tell'); return false;">
+				<input type="text" name="msg" />
+				<input type="submit" value="Send" />
+			</form>
+		</div>
+
+		<div id="give_window" class="dialog">
+			<h4>Give item(s)<span class="close" title="Close" onclick="MWA.closeWindow(this);"></span></h4>
+			<form onsubmit="MWA.issueCommand('give'); return false;">
+				<p>
+					<label>Item ID: </label>
+					<input type="text" name="item" />
+				</p>
+				<p>
+					<label>Quantity: </label>
+					<input type="text" name="quantity" value="1" />
+				</p>
+
+				<p>
+					<label>Data value: </label>
+					<input type="text" name="data-value" />
+				</p>
+				<input type="submit" value="Give" />
+			</form>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		$(".slider").slider({
+			value: <?php echo $this->server->getProperty('view-distance'); ?>,
+			min: 3,
+			max: 15,
+			step: 1,
+			slide: function(event, ui) {
+				$("#vd").val(ui.value);
+			}
+		});
+
+		MWA.server_stop_timer = <?php echo $this->warning_time; ?>;
+		MWA.current_server = <?php echo $this->server->id; ?>;
+	</script>
+	<?php
+}
+?>

@@ -1,0 +1,24 @@
+<h1>Setup</h1>
+
+<form action="/setup" method="post">
+	<input type="hidden" name="step" value="2" />
+	<fieldset>
+		<legend>Choose which best describes your situation</legend>
+
+		<p>
+			<label for="ms1">Local-running servers</label>
+			<input id="ms1" type="radio" name="status" value="<?php echo SetupController::STATUS_LOCAL_RUNNING; ?>" />
+			<span class="desc">Minecraft / Craftbukkit will run from this machine</span>
+		</p>
+
+		<p>
+			<label for="ms2">No local servers</label>
+			<input id="ms2" type="radio" name="status" value="<?php echo SetupController::STATUS_ONLY_EXTERNAL; ?>" />
+			<span class="desc">You will connect to remote Minecraft servers</span>
+		</p>
+
+		<p class="submit">
+			<input type="submit" value="Continue" />
+		</p>
+	</fieldset>
+</form>

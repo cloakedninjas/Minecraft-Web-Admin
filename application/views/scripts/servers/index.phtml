@@ -1,0 +1,33 @@
+<h1>Servers</h1>
+
+<p>
+	<a class="button icon server" href="/servers/create">Create New Server</a>
+</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Local</th>
+		</tr>
+	</thead>
+	<tbody>
+
+<?php
+$i = 1;
+foreach ($this->servers as $server) {
+	$i = $i - 1;
+	$url = '/servers/edit/' . $server->id;
+	$alt = ($i % 2 == 0) ? '' : 'alt';
+	$local = ($server->local) ? '<img src="/images/tick.png" alt="Yes" />' : '';
+
+	echo '<tr class="' . $alt . '">';
+	echo '<td><a href="' . $url . '">' . $server->name . '</a></td>';
+	echo '<td>foo</td>';
+	echo '<td>' . $local . '</td>';
+	echo '</tr>';
+}
+?>
+	</tbody>
+</table>
