@@ -1,0 +1,21 @@
+{
+    "datastore": "db.json",
+    
+    "minecraft": {
+        "jar_url": "http://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar",
+        "defaults": {
+            "name": "server1",
+            "host": "localhost",
+            "port": 25565,
+            "rconport": 25575,
+            "storage_path": "/../data/",
+            "storage_folder": "servers",
+            "storage_perms": "0775"
+        }
+    },
+    
+    "craftbukkit": {
+        "jar_url": "http://dl.bukkit.org/latest-rb/craftbukkit.jar"
+    }
+}
+
