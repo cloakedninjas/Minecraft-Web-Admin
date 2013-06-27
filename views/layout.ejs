@@ -18,24 +18,18 @@
 	<body>
 		<div id="frame">
 			<div id="flash_message">
-			<?php
-
-			if ($this->flash_messages !== null) {
-				echo '<div class=' . $this->flash_messages['type'] . '>' . $this->flash_messages['msg'] . '</div>';
-			}
-
-			?>
+            <% if (typeof flashMessage !== 'undefined') { %>
+			    <%= flashMessage %>
+            <% } %>
 			</div>
 
 			<div class="header">
 
 				<a class="logo" href="/"></a>
 
-				<?php
-				if ($this->layout()->show_menu) {
-					echo $this->mainMenu();
-				}
-				?>
+				<% if (false) { %>
+                <%- include navigation.ejs %>
+                <% } %>
 			</div>
 
 			<div class="content">

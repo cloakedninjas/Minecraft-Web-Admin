@@ -59,7 +59,7 @@ input, select {
 	display: block;
 	width: 358px;
 	height: 96px;
-	background: url(/images/logo8.png) top left no-repeat;
+	/*background: url(/images/logo8.png) top left no-repeat;*/
 }
 
 .navigation {
@@ -497,7 +497,7 @@ div.controls {
 }
 
 #tell_window {
-	
+
 }
 
 .clear {

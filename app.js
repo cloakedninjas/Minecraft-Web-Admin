@@ -28,6 +28,7 @@ app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/setup', setup.index);
+app.post('/setup', setup.index);
 app.get('/', mwa.appInit, routes.index);
 
 http.createServer(app).listen(app.get('port'), function(){
