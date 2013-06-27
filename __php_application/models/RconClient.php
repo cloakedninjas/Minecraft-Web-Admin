@@ -80,8 +80,6 @@ abstract class Application_Model_RconClient {
 		$this->id++;
 
 		// Put our packet together
-		$data = pack("VV", $this->id, $cmd) . $s1 . chr(0) . $s2 . chr(0);
-
 		$data = pack("VV",1,$cmd).$s1.chr(0).$s2.chr(0);
 
 		// Prefix the packet size

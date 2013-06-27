@@ -24,7 +24,6 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('^CBN"4s-2da'));
 app.use(express.session());
 app.use(app.router);
-app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/setup', setup.index);
@@ -34,3 +33,8 @@ app.get('/', mwa.appInit, routes.index);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+var RconClient = require('./models/rcon-client');
+
+//var client = new RconClient('localhost', 25575, 'foobar');
+//client.connect();

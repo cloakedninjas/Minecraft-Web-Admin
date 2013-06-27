@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "minecraft-web-admin",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
     "express-partials": "*",
     "ejs": "*",
     "stylus": "*",
-    "konphyg": "*"
+    "konphyg": "*",
+    "rcon": "0.1.5"
   }
 }
