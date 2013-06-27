@@ -16,7 +16,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.use(partials());
+//app.use(partials());
 app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -34,7 +34,6 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var RconClient = require('./models/rcon-client');
-
+//var RconClient = require('./models/rcon-client');
 //var client = new RconClient('localhost', 25575, 'foobar');
 //client.connect();

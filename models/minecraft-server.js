@@ -1,5 +1,5 @@
 function MinecraftServer() {
-  this.bar = 1;
+  this.rcon = null;
   this.baz = 'baz';
 }
 
