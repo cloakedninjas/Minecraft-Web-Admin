@@ -26,9 +26,9 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/setup', setup.index);
-app.post('/setup', setup.index);
-app.get('/', mwa.appInit, routes.index);
+//app.get('/setup', setup.index);
+//app.post('/setup', setup.index);
+app.get('/', routes.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

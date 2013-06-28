@@ -1,42 +1,42 @@
-define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'views/projects/list',
-  'views/users/list'
-], function($, _, Backbone, Session, ProjectListView, UserListView){
-  var AppRouter = Backbone.Router.extend({
+define(['backbone', 'app', 'views/login', 'views/setup'], function(Backbone, App, LoginView, SetupView){
+  return Backbone.Router.extend({
+    initialize: function() {
+      Backbone.history.start();
+    },
+
     routes: {
       // Define some URL routes
-      '/projects': 'showProjects',
-      '/users': 'showUsers',
+      '/login': 'showLogin',
+      'setup': 'showSetup',
 
       // Default
-      '*actions': 'defaultAction'
+      '': 'showIndex'
+      //'*actions': 'defaultRoute'
+    },
+
+    showIndex: function () {
+      console.log('default route says hello');
+
+      var app = require('app');
+
+      if (app.getState('setup')) {
+        // check logged in
+      }
+      else {
+        this.navigate("/setup", {trigger: true});
+      }
+
+    },
+
+    showSetup: function() {
+      var view = new SetupView();
+      view.render();
+    },
+
+    showLogin: function(){
+      var view = new LoginView();
+      view.render();
     }
   });
 
-  var initialize = function(){
-    var app_router = new AppRouter;
-    app_router.on('showProjects', function(){
-      // Call render on the module we loaded in via the dependency array
-      // 'views/projects/list'
-      var projectListView = new ProjectListView();
-      projectListView.render();
-    });
-    // As above, call render on our loaded module
-    // 'views/users/list'
-    app_router.on('showUsers', function(){
-      var userListView = new UserListView();
-      userListView.render();
-    });
-    app_router.on('defaultAction', function(actions){
-      // We have no matching route, lets just log what the URL was
-      console.log('No route:', actions);
-    });
-    Backbone.history.start();
-  };
-  return {
-    initialize: initialize
-  };
 });

@@ -1,11 +1,17 @@
-define(['router'], function(Router){
-  var initialize = function(){
-    // Pass in our Router module and call it's initialize function
-    Router.initialize();
-  };
+define(['router'], function(Router) {
 
   return {
-    initialize: initialize
+    _state: {},
+
+    initialize: function() {
+      this._state = state;
+      this._router = new Router();
+    },
+
+    getState: function (field) {
+      return (typeof this._state[field] !== 'undefined') ? this._state[field] : null;
+    }
   };
+
 });
 
