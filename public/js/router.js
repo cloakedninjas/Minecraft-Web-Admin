@@ -15,8 +15,6 @@ define(['backbone', 'app', 'views/login', 'views/setup'], function(Backbone, App
     },
 
     showIndex: function () {
-      console.log('default route says hello');
-
       var app = require('app');
 
       if (app.getState('setup')) {

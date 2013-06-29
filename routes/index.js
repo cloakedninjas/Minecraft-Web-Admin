@@ -1,7 +1,3 @@
-/*
- * GET home page.
- */
-
 exports.index = function(req, res) {
   // bootstrap models for front-end
   var state = {

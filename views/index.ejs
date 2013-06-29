@@ -1,20 +1,48 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Minecraft Web Admin</title>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
   <script type="text/javascript">
     var state = <%- JSON.stringify(state) %>;
   </script>
+
   <script data-main="js/main" src="/js/libs/require-min.js"></script>
 
   <link type="text/css" rel="stylesheet" href="/css/screen.css" />
-</head>
-<body>
+  <link type="text/css" rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.8.23.custom.css" />
 
-<div id="container">
-  <div id="menu"></div>
-  <div id="content"></div>
+  <title>Minecraft Web Admin</title>
+  <meta name="description" content="Minecraft Web Admin tool" />
+  <meta name="keywords" content="minecraft, admin, tool, php" />
+  <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+
+<body>
+<div id="frame">
+  <div id="flash_message"></div>
+
+  <div class="header">
+
+    <a class="logo" href="/"></a>
+
+    <% if (false) { %>
+    <ul class="navigation">
+      <li><a href="/">Home</a></li>
+      <li><a href="/servers">Servers</a></li>
+      <li><a href="/settings">Settings</a></li>
+    </ul>
+
+    <% } %>
+  </div>
+
+  <div id="content">
+    <div class="clear"></div>
+  </div>
 </div>
 
+<div id="footer">
+  <p>Minecraft Web Admin &copy; <?php echo date("Y"); ?> - Minecraft is &copy; <a href="http://www.mojang.com/" target="_blank">Mojang AB</a></p>
+</div>
 </body>
 </html>
