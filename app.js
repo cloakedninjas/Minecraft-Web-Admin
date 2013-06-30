@@ -18,7 +18,6 @@ app.set('view engine', 'ejs');
 
 //app.use(partials());
 app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
-app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('^CBN"4s-2da'));
@@ -26,8 +25,8 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.get('/setup', setup.index);
-//app.post('/setup', setup.index);
+app.get('/setup', setup.index);
+app.post('/setup', setup.index);
 app.get('/', routes.index);
 
 http.createServer(app).listen(app.get('port'), function(){

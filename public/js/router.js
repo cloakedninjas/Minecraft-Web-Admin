@@ -28,7 +28,6 @@ define(['backbone', 'app', 'views/login', 'views/setup'], function(Backbone, App
 
     showSetup: function() {
       var view = new SetupView();
-      view.render();
     },
 
     showLogin: function(){

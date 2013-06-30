@@ -6,15 +6,15 @@
 		<legend>Choose which best describes your situation</legend>
 
 		<p>
-			<label for="ms1">Local-running servers</label>
-			<input id="ms1" type="radio" name="status" value="<?php echo SetupController::STATUS_LOCAL_RUNNING; ?>" />
-			<span class="desc">Minecraft / Craftbukkit will run from this machine</span>
+			<label for="ms1">No server(s)</label>
+			<input id="ms1" type="radio" name="status" value="none" />
+			<span class="desc">I want to create a new Minecraft server on this machine</span>
 		</p>
 
 		<p>
-			<label for="ms2">No local servers</label>
-			<input id="ms2" type="radio" name="status" value="<?php echo SetupController::STATUS_ONLY_EXTERNAL; ?>" />
-			<span class="desc">You will connect to remote Minecraft servers</span>
+			<label for="ms2">Existing server(s)</label>
+			<input id="ms2" type="radio" name="status" value="existing" />
+			<span class="desc">You will connect to local / remote Minecraft servers</span>
 		</p>
 
 		<p class="submit">

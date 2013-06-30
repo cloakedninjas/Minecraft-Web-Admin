@@ -1,12 +1,15 @@
 define(['backbone'], function(Backbone) {
+  'use strict';
   return Backbone.Model.extend({
-    url: '/setup',
+
     defaults: {
-      title: 'empty model'
+      step: 1,
+      errors: {}
     },
 
-    initialize: function() {
-
+    url: function() {
+      return '/setup';
     }
+
   });
 });

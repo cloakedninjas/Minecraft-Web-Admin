@@ -2,63 +2,65 @@
  * setup controller (GET + POST)
  */
 
-var errors = {
-  count: 0,
-  errors: {}
-};
-
-function createSetupSession(req) {
+function createSetupSession(req, response) {
   req.session.setup = {
     step: 1
   };
+  response.step = 1;
 }
 
-function processStep(step, req, res) {
-  if (step === 1) {
+function processStep(req, response) {
+  var step = req.session.setup.step;
+
+  if (req.session.setup.step === 1) {
     // validate username + password
+
     if (req.body.username === '') {
-      addError('username', 'Username cannot be blank');
+      addError('username', 'Username cannot be blank', response);
     }
-    else if (req.body.password1 === '') {
-      addError('password', 'Password cannot be blank');
+    if (req.body.password1 === '') {
+      addError('password1', 'Password cannot be blank', response);
     }
     else if (req.body.password1 !== req.body.password2) {
-      addError('password', 'Passwords do not match');
+      addError('password2', 'Passwords do not match', response);
     }
     else {
+      // proceed to step 2
       step = 2;
     }
-
   }
 
+  response.step = step;
   req.session.setup.step = step;
-  return step;
 }
 
-function addError(field, message) {
-  errors.count++;
-  errors.errors[field] = message;
+function addError(field, message, response) {
+  if (typeof response.errors === 'undefined') {
+    response.errors = {};
+  }
+  response.errors[field] = message;
+
+  response.foo = '1';
 }
 
 exports.index = function(req, res) {
 
-  var step = 1;
+  // this will be our JSON response
+  var response = {
+    step: null
+  };
 
   if (typeof req.session.setup === 'undefined') {
-    createSetupSession(req);
+    createSetupSession(req, response);
   }
   else {
-    step = req.session.setup.step;
+    response.step = req.session.setup.step;
   }
 
   if (req.method === 'POST') {
-    // get next step
-    step = processStep(step, req, res);
-
-    console.log(errors);
-
-    //
-
+    processStep(req, response);
   }
-  res.render('setup/step-' + step, { title: 'Setup', errors: errors.errors});
+
+  res.json(response);
+  //res.render('setup/step-' + step, { title: 'Setup', errors: errors.errors});
 };

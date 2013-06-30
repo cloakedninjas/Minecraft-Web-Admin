@@ -123,6 +123,7 @@ h1 {
 fieldset {
 	margin: 0 0 15px;
 	border: 1px #ddd solid;
+    background: #F4F4F2;
 }
 
 fieldset legend {
@@ -138,14 +139,16 @@ fieldset h3 {
 }
 
 fieldset p {
+    position: relative;
 	margin: 10px 0 10px;
 	padding: 10px;
-	background: #D1D1D1;
 }
 
 fieldset label {
 	display: inline-block;
-	width: 200px;
+    width: 200px;
+    padding: 0 20px 0 0;
+    text-align: right;
 }
 
 fieldset label.radio {
@@ -154,11 +157,20 @@ fieldset label.radio {
 }
 
 fieldset input {
-	width: 200px;
-	padding: 2px 5px;
-	border: 1px #5D5D5D solid;
-	border-radius: 4px;
+    position: relative;
+	width: 300px;
+    height: 30px;
+    line-height: 20px;
+	padding: 0 5px;
+    border: 2px #fff solid;
 	font-family: "Segoe UI";
+    background: #fff;
+    z-index: 10;
+}
+
+fieldset input:focus {
+    border: 2px #55606E solid;
+    border-radius: 2px;
 }
 
 fieldset input[type=radio], fieldset input[type=checkbox] {
@@ -192,9 +204,8 @@ fieldset input[type=submit], .button {
 	display: inline-block;
 	margin: 0 10px 0 0;
 	padding: 5px;
-	border: 1px #005800 solid;
-	border-radius: 6px;
-	background: #005800;
+	border: 0;
+	background: #008E00;
 	color: #fff;
 	cursor: pointer;
 }
@@ -207,6 +218,24 @@ fieldset .submit input {
 	margin: 0;
 }
 
+fieldset p.error input {
+    border-color: #CD4237;
+}
+
+fieldset p .error-message {
+    position: absolute;
+    left: 543px;
+    top: 10px;
+    width: 200px;
+    height: 34px;
+    line-height: 32px;
+    padding: 0 0 0 10px;
+    background: #CD4237;
+    color: #fff;
+    z-index: 5;
+}
+
+/*
 .note {
 	padding: 10px;
 	border: 1px solid #FED22F;
@@ -221,6 +250,7 @@ fieldset .submit input {
 	font-weight: bold;
 	color: #fff;
 }
+*/
 
 ul.error {
 	padding: 10px 10px 10px 20px;
