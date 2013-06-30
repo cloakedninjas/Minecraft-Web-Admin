@@ -122,8 +122,8 @@ h1 {
 
 fieldset {
 	margin: 0 0 15px;
-	border: 1px #ddd solid;
-    background: #F4F4F2;
+	border: 2px #55606E solid;
+    background: #DEDFE1;
 }
 
 fieldset legend {
@@ -157,7 +157,8 @@ fieldset label.radio {
 }
 
 fieldset input {
-    position: relative;
+    position: absolute;
+	top: 1px;
 	width: 300px;
     height: 30px;
     line-height: 20px;
@@ -168,12 +169,13 @@ fieldset input {
     z-index: 10;
 }
 
-fieldset input:focus {
+fieldset input[type=text]:focus {
     border: 2px #55606E solid;
     border-radius: 2px;
 }
 
 fieldset input[type=radio], fieldset input[type=checkbox] {
+	top: 3px;
 	width: 20px;
 	margin: 0 10px 0 0;
 }
