@@ -121,6 +121,7 @@ h1 {
 }
 
 fieldset {
+	position: relative;
 	margin: 0 0 15px;
 	border: 2px #55606E solid;
     background: #DEDFE1;
@@ -181,7 +182,10 @@ fieldset input[type=radio], fieldset input[type=checkbox] {
 }
 
 fieldset input[type=submit] {
+	position: static;
 	width: auto;
+	height: auto;
+	margin: 0;
 }
 
 fieldset .ui-slider {
@@ -197,14 +201,17 @@ fieldset .desc {
 }
 
 fieldset .submit {
-	float: right;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
 	background: none;
+	margin: 0;
 	padding: 0;
 }
 
 fieldset input[type=submit], .button {
 	display: inline-block;
-	margin: 0 10px 0 0;
+	margin: 0;
 	padding: 5px;
 	border: 0;
 	background: #008E00;
@@ -214,10 +221,6 @@ fieldset input[type=submit], .button {
 
 fieldset input[type=submit]:hover, .button:hover {
 	background: #00B500;
-}
-
-fieldset .submit input {
-	margin: 0;
 }
 
 fieldset p.error input {
