@@ -4,7 +4,7 @@ define(['base-view'], function(BaseView) {
   return BaseView.extend({
     className: 'dashboard',
 
-    template: _.template('Dashboard'),
+    template: _.template('Dashboard<p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>'),
 
     initialize: function () {
 

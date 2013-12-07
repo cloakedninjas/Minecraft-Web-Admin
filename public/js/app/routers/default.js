@@ -1,12 +1,17 @@
-define(['backbone', 'dashboard-view'], function(Backbone, DashboardView){
+define(['backbone', 'logged-in-layout', 'dashboard-view'], function(Backbone, LoggedInLayout, DashboardView){
   'use strict';
 
   return Backbone.Router.extend({
     $el: null,
     currentView: null,
+    layout: null,
 
     initialize: function(el) {
       this.$el = el;
+
+      this.layout = new LoggedInLayout();
+      this.$el.html(this.layout.render().$el);
+
       Backbone.history.start();
     },
 
@@ -20,13 +25,10 @@ define(['backbone', 'dashboard-view'], function(Backbone, DashboardView){
         this.currentView.remove();
       }
 
-      this.$el.html(view.render().$el);
-
       this.currentView = view;
-    },
 
-    showIndex: function () {
-      console.log('index page');
+      // in lieu of a proper layout manager, inject the view into our layout
+      this.layout.$('#content').html(view.render().$el);
     },
 
     showDashboard: function () {

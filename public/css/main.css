@@ -11,6 +11,7 @@ textarea {
 }
 
 body {
+  font-family: "Segoe UI", arial, sans-serif;
   font-size: 1em;
   line-height: 1.4;
   background: #111314;
@@ -61,3 +62,80 @@ a {
   padding: 0.2em 0;
 }
 
+header {
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  padding: 0 40px;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+h1.logo-small {
+  float: left;
+  margin: 0;
+}
+
+header .links {
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+header .links li {
+  float: left;
+  margin: 0 10px 0 0;
+  list-style: none;
+}
+
+.frame {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 40px 0 0;
+}
+
+nav {
+  height: 40px;
+  padding: 10px 8px 0 8px;
+  border: 1px #000 solid;
+  border-radius: 6px;
+  background: url(/images/nav_bg.png) 0 0 repeat-x;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+nav li.settings {
+  float: right;
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  width: 150px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px #191818 solid;
+  border-radius: 4px;
+  background: #424242;
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+nav li.active a {
+  background: url(/images/nav_item_active_bg.png) 0 0 repeat-x;
+}
+
+nav a:hover {
+
+}

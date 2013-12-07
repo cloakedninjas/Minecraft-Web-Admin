@@ -5,8 +5,10 @@ require.config({
     backbone: 'vendor/backbone-min',
     text: 'vendor/text',
 
-    'app': 'app/views/app',
+    'app-view': 'app/views/app',
     'default-router': 'app/routers/default',
+
+    'logged-in-layout': 'app/layouts/logged-in',
 
     'base-view': 'app/views/base',
     'dashboard-view': 'app/views/dashboard'
@@ -23,6 +25,6 @@ require.config({
 
 });
 
-require(['app'], function(App){
+require(['app-view'], function(App){
   new App();
 });
