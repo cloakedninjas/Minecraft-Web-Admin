@@ -3,7 +3,13 @@ require.config({
     jquery: 'vendor/jquery-2.0.3.min',
     underscore: 'vendor/underscore-min',
     backbone: 'vendor/backbone-min',
-    text: 'vendor/text'
+    text: 'vendor/text',
+
+    'app': 'app/views/app',
+    'default-router': 'app/routers/default',
+
+    'base-view': 'app/views/base',
+    'dashboard-view': 'app/views/dashboard'
   },
   'shim': {
     'backbone': {
@@ -18,5 +24,5 @@ require.config({
 });
 
 require(['app'], function(App){
-  App.initialize();
+  new App();
 });
