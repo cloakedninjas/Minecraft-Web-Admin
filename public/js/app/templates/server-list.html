@@ -1,0 +1,24 @@
+<ul class="actions">
+  <li class="create"><a>Create</a></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th class="checkbox"></th>
+      <th>Name</th>
+      <th class="player-count">Players</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% _.each(servers, function(server) { %>
+    <tr>
+      <td class="checkbox"><input type="checkbox" /></td>
+      <td><%= server.name %></td>
+      <td><%= server.playerCount %> / <%= server.playerLimit %></td>
+      <td></td>
+    </tr>
+  <% }); %>
+  </tbody>
+</table>

@@ -14,15 +14,15 @@ define(['base-view', 'text!app/templates/layouts/logged-in.html'], function(Base
     },
 
     showDashboard: function () {
-      Backbone.history.navigate('dashboard');
+      Backbone.history.navigate('dashboard', {trigger: true});
     },
 
     showServers: function () {
-      Backbone.history.navigate('servers');
+      Backbone.history.navigate('servers', {trigger: true});
     },
 
     showSettings: function () {
-      Backbone.history.navigate('settings');
+      Backbone.history.navigate('settings', {trigger: true});
     },
 
     logout: function () {

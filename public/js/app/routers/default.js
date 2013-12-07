@@ -16,6 +16,7 @@ define(['backbone', 'logged-in-layout', 'dashboard-view', 'server-list-view'], f
     routes: {
       // Default
       '': 'showDashboard',
+      'dashboard': 'showDashboard',
       'servers': 'showServers'
     },
 
@@ -35,7 +36,7 @@ define(['backbone', 'logged-in-layout', 'dashboard-view', 'server-list-view'], f
     },
 
     showServers: function () {
-      console.log('here');
+      console.log('show servers...');
       this.switchView(new ServerListView());
     }
   });

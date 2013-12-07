@@ -7,7 +7,7 @@ define(['base-view'], function(BaseView) {
     template: _.template('Dashboard<p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p><p>a</p>'),
 
     initialize: function () {
-
+      console.log('dash init');
     }
   });
 

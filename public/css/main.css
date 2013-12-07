@@ -7,14 +7,14 @@ button,
 input,
 select,
 textarea {
-  color: #707275;
+  color: #000;
 }
 
 body {
   font-family: "Segoe UI", arial, sans-serif;
   font-size: 1em;
   line-height: 1.4;
-  background: #111314;
+  background: #545454 url(/images/big_bg.jpg) center center no-repeat;
 }
 
 ::-moz-selection {
@@ -90,11 +90,12 @@ header .links li {
 .frame {
   width: 1000px;
   margin: 0 auto;
-  padding: 40px 0 0;
+  padding: 50px 0 0;
 }
 
 nav {
   height: 40px;
+  margin: 0 0 20px;
   padding: 10px 8px 0 8px;
   border: 1px #000 solid;
   border-radius: 6px;
@@ -138,4 +139,66 @@ nav li.active a {
 
 nav a:hover {
 
+}
+
+.list-control .actions {
+  height: 34px;
+  margin: 0;
+  padding: 8px 8px 0 8px;
+  list-style: none;
+  background: url(/images/nav_bg.png) 0 0 repeat-x;
+  border: 1px #000 solid;
+  border-bottom: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.7) inset;
+}
+
+.list-control .actions li {
+  float: left;
+}
+
+.list-control .actions a {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 5px;
+  background: #424242;
+  border: 1px #000 solid;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.server-list table {
+  width: 100%;
+  border-left: 1px #000 solid;
+  border-right: 1px #000 solid;
+}
+
+.server-list th {
+  padding: 3px 5px;
+  text-align: left;
+  border-bottom: 1px #000 solid;
+  background: #7A7878;
+  color: #1E1E1E;
+}
+
+.list-control th.checkbox {
+  width: 50px;
+}
+
+.server-list .player-count {
+  width: 100px;
+}
+
+.server-list td {
+  border-bottom: 1px #000 solid;
+  background: #f0f0f0;
+}
+
+.list-control td.checkbox {
+  text-align: center;
 }
