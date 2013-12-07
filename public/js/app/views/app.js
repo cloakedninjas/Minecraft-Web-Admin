@@ -1,4 +1,4 @@
-define(['base-view', 'default-router'], function(BaseView, Router){
+define(['base-view', 'default-router', 'backbone'], function(BaseView, Router, Backbone){
   'use strict';
 
   return BaseView.extend({
@@ -6,6 +6,7 @@ define(['base-view', 'default-router'], function(BaseView, Router){
 
     initialize: function () {
       this._router = new Router(this.$el);
+      Backbone.history.start({ pushState: true });
     }
   });
 });

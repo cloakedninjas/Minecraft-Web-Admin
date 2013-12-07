@@ -1,4 +1,4 @@
-define(['backbone', 'logged-in-layout', 'dashboard-view'], function(Backbone, LoggedInLayout, DashboardView){
+define(['backbone', 'logged-in-layout', 'dashboard-view', 'server-list-view'], function(Backbone, LoggedInLayout, DashboardView, ServerListView){
   'use strict';
 
   return Backbone.Router.extend({
@@ -11,13 +11,12 @@ define(['backbone', 'logged-in-layout', 'dashboard-view'], function(Backbone, Lo
 
       this.layout = new LoggedInLayout();
       this.$el.html(this.layout.render().$el);
-
-      Backbone.history.start();
     },
 
     routes: {
       // Default
-      '': 'showDashboard'
+      '': 'showDashboard',
+      'servers': 'showServers'
     },
 
     switchView: function (view) {
@@ -33,6 +32,11 @@ define(['backbone', 'logged-in-layout', 'dashboard-view'], function(Backbone, Lo
 
     showDashboard: function () {
       this.switchView(new DashboardView());
+    },
+
+    showServers: function () {
+      console.log('here');
+      this.switchView(new ServerListView());
     }
   });
 

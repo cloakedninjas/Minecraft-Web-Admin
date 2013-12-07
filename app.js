@@ -20,8 +20,14 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
+/*app.get('*', function(request, response, next) {
+  response.sendfile(__dirname + '/index.html');
+});*/
 app.get('/', routes.index);
+app.get('/dashboard', routes.index);
+app.get('/servers', routes.index);
+app.get('/settings', routes.index);
+app.get('/logout', routes.logout);
 
 
 http.createServer(app).listen(app.get('port'), function(){

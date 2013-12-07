@@ -11,7 +11,8 @@ require.config({
     'logged-in-layout': 'app/layouts/logged-in',
 
     'base-view': 'app/views/base',
-    'dashboard-view': 'app/views/dashboard'
+    'dashboard-view': 'app/views/dashboard',
+    'server-list-view': 'app/views/server-list'
   },
   'shim': {
     'backbone': {
