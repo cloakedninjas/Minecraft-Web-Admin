@@ -36,7 +36,6 @@ define(['backbone', 'logged-in-layout', 'dashboard-view', 'server-list-view'], f
     },
 
     showServers: function () {
-      console.log('show servers...');
       this.switchView(new ServerListView());
     }
   });

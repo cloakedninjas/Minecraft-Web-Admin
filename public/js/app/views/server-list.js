@@ -1,4 +1,4 @@
-define(['base-view', 'text!app/templates/server-list.html'], function(BaseView, listTemplate) {
+define(['base-view', 'text!app/templates/server-list.html', 'create-server-view'], function(BaseView, listTemplate, CreateServerView) {
   'use strict';
 
   return BaseView.extend({
@@ -6,8 +6,13 @@ define(['base-view', 'text!app/templates/server-list.html'], function(BaseView, 
 
     template: _.template(listTemplate),
 
-    initialize: function () {
-      //this.servers = new Backbone.Collection({})
+    events: {
+      'click .actions .create': 'showCreateForm'
+    },
+
+    showCreateForm: function () {
+      var createForm = new CreateServerView();
+      App.showLightbox(createForm, 'Create new server');
     },
 
     serialize: function() {
