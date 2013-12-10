@@ -1,4 +1,4 @@
-define(['base-view', 'default-router', 'backbone'], function(BaseView, Router, Backbone){
+define(['underscore', 'base-view', 'default-router', 'backbone'], function(_, BaseView, Router, Backbone){
   'use strict';
 
   return BaseView.extend({
@@ -9,13 +9,29 @@ define(['base-view', 'default-router', 'backbone'], function(BaseView, Router, B
       Backbone.history.start({ pushState: true });
     },
 
-    showLightbox: function (content, title) {
-      $('body').append('<div class="lb-blackout"></div><div class="lb-content"><h2>' + title + '</h2></div>');
+    /**
+     * TODO: refactor into its own View
+     */
+    showLightbox: function (content, options) {
+      options = _.extend({
+        title: null,
+        cssClass: '',
+        closeButton: true
+      }, options);
+
+      $('body').append('<div class="lightbox"><div class="lb-blackout"></div><div class="lb-content ' + options.cssClass + '"><h2>' + options.title + '</h2></div></div>');
       $('.lb-content').append(content.render().$el);
+
+      if (options.closeButton) {
+        $('.lb-content h2').append('<a class="close"></a>');
+        $('.lb-content h2 .close').on('click', function () {
+          App.hideLightbox();
+        })
+      }
     },
 
     hideLightbox: function () {
-      $('.lb-blackout,.lb-content').remove();
+      $('.lightbox').remove();
     }
   });
 });

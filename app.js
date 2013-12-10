@@ -1,7 +1,9 @@
 var express = require('express'),
   path = require('path'),
   http = require('http'),
-  routes = require('./app/routes');
+  routes = require('./app/routes'),
+  apiRoutes = require('./app/routes/api')
+  ;
 
 // app is our global object
 app = express();
@@ -27,6 +29,9 @@ app.get('/', routes.index);
 app.get('/dashboard', routes.index);
 app.get('/servers', routes.index);
 app.get('/settings', routes.index);
+
+app.get('/api/:resource', apiRoutes.index);
+
 app.get('/logout', routes.logout);
 
 

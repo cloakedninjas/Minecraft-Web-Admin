@@ -207,33 +207,97 @@ nav a:hover {
   text-align: center;
 }
 
-.lb-blackout {
+.lightbox {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.lb-blackout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.7);
+  z-index: 5000;
 }
 
 .lb-content {
-  position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 25%;
-  bottom: 25%;
-  background: #fff;
+  position: relative;
+  z-index: 5001;
+  width: 500px;
+  margin: 200px auto 0;
+  background: #666 url(/images/lightbox_header_bg.png) 0 0 repeat-x;
+  color: #fff;
   border: 1px #000 solid;
+  border-radius: 6px;
 }
 
 .lb-content h2 {
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   margin: 0;
-  padding: 0;
+  padding: 0 10px;
   border-bottom: 1px #000 solid;
-  background: url(/images/nav_bg.png) 0 0 repeat-x;
+}
+
+.lb-content h2 .close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 31px;
+  height: 31px;
+  background: url(/images/lb_close.png) 0 0 no-repeat;
+  cursor: pointer;
+}
+
+form {
+  padding: 20px;
+}
+
+input {
+  border: 1px #000 solid;
+}
+
+select {
+  border: 1px #000 solid;
+}
+
+form div {
+  margin: 0 0 20px;
+}
+
+form span {
+  display: inline-block;
+  width: 120px;
+  font-weight: bold;
+}
+
+form .submit {
+  height: 26px;
+  margin: 0;
+}
+
+form .submit input {
+  float: right;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 10px;
+  background: #424242;
+  border: 1px #000 solid;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: bold;
   color: #fff;
+}
+
+.server-create .name input {
+  width: 200px;
 }
 
 footer {

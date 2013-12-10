@@ -13,7 +13,11 @@ require.config({
     'base-view': 'app/views/base',
     'dashboard-view': 'app/views/dashboard',
     'server-list-view': 'app/views/server-list',
-    'create-server-view': 'app/views/server-create'
+    'create-server-view': 'app/views/server-create',
+
+    'server-model': 'app/models/server',
+
+    'server-collection': 'app/collections/server'
   },
   'shim': {
     'backbone': {
