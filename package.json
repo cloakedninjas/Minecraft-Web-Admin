@@ -6,10 +6,11 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "ejs": "*",
     "express": "3.2.6",
     "express-partials": "*",
-    "ejs": "*",
-    "stylus": "*",
-    "rcon": "0.1.5"
+    "rcon": "0.1.5",
+    "sqlite3": "^3.0.5",
+    "stylus": "*"
   }
 }

@@ -1,0 +1,25 @@
+-API
+
+GET /server
+
+
+	[
+		{
+			id: int
+			label: string
+			port: int
+			flavour: int (classic / forge)
+			properties: string (JSON encoded minecraft server.properties)
+			running: boolean
+
+
+		}
+	]
+
+POST /server // create new server
+
+GET /server/<serverId>
+
+PUT /server/<serverId>
+
+
